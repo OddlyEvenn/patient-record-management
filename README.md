@@ -96,3 +96,16 @@ EMAIL_PASS=your_gmail_app_password
 ```bash
 python main.py
 ```
+
+## 🔐 Security
+
+-Credentials and secrets are hidden via .gitignore
+-Email password stored securely in .env
+-OAuth 2.0 used for accessing Google APIs
+-All network communication uses HTTPS
+
+## 🤝 Author
+
+-Even Patel
+-📧 Connect via GitHub or email
+-🏫 Developed as part of B.Tech CSE at Ahmedabad University
