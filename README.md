@@ -1,113 +1,192 @@
 # 🏥 Patient Record Management System
 
-A modular, secure, and user-friendly Python application for managing patient records using a Tkinter-based GUI and Google Sheets as a cloud database. Includes email confirmation for patient registration, with a clean interface and strict authentication.
+A modular, secure, and user-friendly **Python desktop application** for managing patient records. Built with a clean **Tkinter GUI** and powered by **Google Sheets as a cloud database**, this system ensures efficient record handling, secure authentication, and seamless communication via automated email confirmations.
 
 ---
 
-## ✨ Features
+## 🚀 Overview
 
-- ✅ Add, Edit, Delete, and Display patient records
-- ✅ Automatically sends confirmation emails on registration
-- ✅ Stores patient data securely in Google Sheets
-- ✅ GUI built with `tkinter` and `ttk` for a modern layout
-- ✅ OAuth 2.0 authentication for Google API
-- ✅ Total Revenue Summary and CSV Export
-- ✅ Modular code structure (one file per function)
-- ✅ Secure credential handling using `.env`
+This project is designed to simplify patient data management for clinics, small hospitals, or academic purposes. It follows a **modular architecture**, making it easy to maintain, extend, and scale.
 
 ---
 
-## 📂 Folder Structure
+## ✨ Key Features
 
+* 🧾 **Full CRUD Operations** – Add, Edit, Delete, and View patient records
+* 📧 **Automated Email Confirmation** on patient registration
+* ☁️ **Cloud Storage with Google Sheets** (real-time access & backup)
+* 🖥️ **Modern GUI** using `tkinter` + `ttk`
+* 🔐 **Secure Authentication** via OAuth 2.0
+* 📊 **Revenue Summary Dashboard**
+* 📤 **Export Data to CSV**
+* 🧩 **Modular Codebase** (separate logic files for each feature)
+* 🔒 **Environment-based Secret Management** using `.env`
+
+---
+
+## 📂 Project Structure
+
+```
 patient-record-management/
 │
-├── main.py # Main entry point
-├── gui.py # Frontend using Tkinter
+├── main.py                  # Application entry point
+├── gui.py                   # Tkinter GUI (frontend)
 │
-├── modules/ # All backend logic modules
-│ ├── add_patient.py
-│ ├── edit_patient.py
-│ ├── delete_patient.py
-│ ├── display_patient.py
-│ ├── clear_fields.py
-│ ├── email_confirmation.py
-│ ├── google_sheets.py
-│ ├── auth.py
-│ ├── utils.py
-│ ├── report_summary.py
-│ ├── export_data.py
+├── modules/                 # Backend logic
+│   ├── add_patient.py
+│   ├── edit_patient.py
+│   ├── delete_patient.py
+│   ├── display_patient.py
+│   ├── clear_fields.py
+│   ├── email_confirmation.py
+│   ├── google_sheets.py
+│   ├── auth.py
+│   ├── utils.py
+│   ├── report_summary.py
+│   ├── export_data.py
 │
 ├── config/
-│ └── creds.json # 🔐 Google Service Account Key (ignored via .gitignore)
-│ └── creds_template.json # 🔑 Template for others to configure
+│   ├── creds.json           # 🔐 Google Service Account Key (ignored)
+│   └── creds_template.json  # Template for setup
 │
 ├── assets/
-│ └── logo.png 
+│   └── logo.png             # UI assets
 │
-├── .env # 🔐 Email credentials (ignored)
-├── .env_template # 📄 Template for environment variables
-├── .gitignore # Files to exclude from version control
-└── README.md
+├── .env                     # 🔐 Email credentials (ignored)
+├── .env_template            # Environment template
+├── .gitignore               # Ignored files
+└── README.md                # Documentation
+```
 
 ---
 
-## 🔧 Setup Instructions
+## ⚙️ Installation & Setup
 
-### ✅ 1. Clone the Repo
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/patient-record-management.git
 cd patient-record-management
 ```
 
-### ✅ 2. Install Dependencies
+---
+
+### 2️⃣ Install Dependencies
 
 ```bash
 pip install gspread oauth2client pandas python-dotenv
 ```
 
-### ✅ 3. Setup Google Sheets API
+---
 
-1)Go to Google Cloud Console
-2)Create a project → Enable Google Sheets API & Drive API
-3)Create Service Account → Generate JSON Key
-4)Download and place as creds.json
-5)Rename creds_template.json → creds.json
+### 3️⃣ Configure Google Sheets API
 
-### ✅ 4. Share the Google Sheet
+1. Go to **Google Cloud Console**
+2. Create a new project
+3. Enable:
 
-1)Create a Google Sheet named: patient_records
+   * Google Sheets API
+   * Google Drive API
+4. Create a **Service Account**
+5. Generate and download the JSON key
+6. Place it in the `config/` folder as:
 
-2)First row headers as follows:
-Patient Id | Name | Age | Gender | Diagnosis | Medical History | Current Treatment | Date of registration | Fees | Email-id
+```
+config/creds.json
+```
 
-3)Share it with your service account email (found in creds.json) and give Editor access
+---
 
-### ✅ 5. Configure Email Settings
+### 4️⃣ Setup Google Sheet
 
-1)Create a .env file:
+1. Create a sheet named:
+
+```
+patient_records
+```
+
+2. Add the following headers in the first row:
+
+```
+Patient Id | Name | Age | Gender | Diagnosis | Medical History | Current Treatment | Date of Registration | Fees | Email-id
+```
+
+3. Share the sheet with your **service account email** (from `creds.json`) and grant **Editor access**
+
+---
+
+### 5️⃣ Configure Email Service
+
+1. Create a `.env` file:
+
+```
 EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_gmail_app_password
+EMAIL_PASS=your_app_password
+```
 
-2)Enable 2FA in your Gmail and create an App Password
+2. Enable **2-Step Verification** in Gmail
+3. Generate an **App Password** and use it above
 
-### ✅ 6. Run the App
+---
+
+### 6️⃣ Run the Application
 
 ```bash
 python main.py
 ```
 
-## 🔐 Security
+---
 
-- ✅ Credentials and secrets are hidden via .gitignore
-- ✅ Email password stored securely in .env
-- ✅ OAuth 2.0 used for accessing Google APIs
-- ✅ All network communication uses HTTPS
+## 🔐 Security Best Practices
 
+* ✅ Sensitive files (`creds.json`, `.env`) are excluded via `.gitignore`
+* ✅ Email credentials are never hardcoded
+* ✅ OAuth 2.0 ensures secure Google API access
+* ✅ All communications use HTTPS
 
-## 🤝 Author
+---
 
-- ✅ Even Patel
-- ✅ 📧 Connect via GitHub or email
-- ✅ 🏫 Developed as part of B.Tech CSE at Ahmedabad University
+## 📊 Future Improvements
 
+* 🔍 Search & filter functionality
+* 📱 Web-based version (Flask/Django)
+* 🔐 Role-based authentication (Admin/User)
+* 📈 Advanced analytics dashboard
+* 🗃️ Database migration (SQLite/PostgreSQL)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Submit a Pull Request
+
+---
+
+## 👨‍💻 Author
+
+**Even Patel**
+🎓 B.Tech CSE – Ahmedabad University
+
+* 💼 GitHub: https://github.com/yourusername
+* 📧 Email: [your_email@example.com](mailto:your_email@example.com)
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub!
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+> 💡 *A simple yet powerful system to digitize patient management efficiently and securely.*
