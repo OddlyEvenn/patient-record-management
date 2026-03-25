@@ -167,16 +167,6 @@ Contributions are welcome!
 
 ---
 
-## 👨‍💻 Author
-
-**Even Patel**
-🎓 B.Tech CSE – Ahmedabad University
-
-* 💼 GitHub: https://github.com/yourusername
-* 📧 Email: [your_email@example.com](mailto:your_email@example.com)
-
----
-
 ## ⭐ Support
 
 If you found this project helpful, consider giving it a ⭐ on GitHub!
